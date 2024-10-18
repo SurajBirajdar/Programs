@@ -1,3 +1,5 @@
+package programs.program;
+
 import java.util.*;
 public class VowelCheck {
 

@@ -1,3 +1,5 @@
+package programs.program;
+
 import java.util.Scanner;
 
 public class CountNumberOfDigits {
