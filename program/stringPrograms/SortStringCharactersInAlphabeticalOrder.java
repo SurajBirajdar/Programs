@@ -3,7 +3,7 @@ package programs.program.stringPrograms;
 public class SortStringCharactersInAlphabeticalOrder {
 
     public static void main(String[] args) {
-        String str = "rock";
+        String str = "suraj"; //ajrsu
         char temp;
         char[] ch = str.toCharArray();
         for(int i=0; i<ch.length; i++) {

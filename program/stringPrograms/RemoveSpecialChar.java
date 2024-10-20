@@ -6,6 +6,5 @@ public class RemoveSpecialChar {
         String str = "@ja*(va^&";
         str = str.replaceAll("[^a-zA-Z0-9]","");
         System.out.println(str);
-
     }
 }
