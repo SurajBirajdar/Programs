@@ -1,4 +1,4 @@
-package programs.program;
+package programs.program.numberPrograms;
 
 import java.util.Scanner;
 

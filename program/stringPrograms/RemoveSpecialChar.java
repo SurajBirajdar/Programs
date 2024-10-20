@@ -1,4 +1,4 @@
-package programs.program;
+package programs.program.stringPrograms;
 
 public class RemoveSpecialChar {
 

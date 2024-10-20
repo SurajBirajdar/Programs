@@ -1,4 +1,4 @@
-package programs.program;
+package programs.program.numberPrograms;
 
 
 public class Perfect_Number

@@ -1,6 +1,4 @@
-package programs.program;
-
-import java.util.Arrays;
+package programs.program.stringPrograms;
 
 public class ReplaceCharWithItsOccurence {
 

@@ -1,8 +1,4 @@
-package programs.program;
-
-import java.util.Scanner;
-
-import static java.util.Collections.swap;
+package programs.program.stringPrograms;
 
 public class reverseString {
 

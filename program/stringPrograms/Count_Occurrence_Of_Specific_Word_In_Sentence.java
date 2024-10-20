@@ -1,4 +1,4 @@
-package programs.program;
+package programs.program.stringPrograms;
 
 public class Count_Occurrence_Of_Specific_Word_In_Sentence {
 	public static void main(String[] args) {

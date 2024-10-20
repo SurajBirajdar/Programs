@@ -1,7 +1,6 @@
-package programs.program;
+package programs.program.stringPrograms;
 
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class RemoveDuplicateChar {
