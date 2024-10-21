@@ -1,11 +1,12 @@
 package programs.program.stringPrograms;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class FirstNonRepeatChar {
     public static void main(String[] args) {
-        String str = "AABCDD";
+        String str = "MBAABCD";
         //Approach-1
         for(int i=0; i<str.length(); i++){
             boolean flag = true;
@@ -20,9 +21,10 @@ public class FirstNonRepeatChar {
                 break;
             }
         }
-        
+
+        //String str = "AABCDD";
         //Approach-2
-        Map<Character,Integer> map = new HashMap<>();
+        Map<Character,Integer> map = new LinkedHashMap<>();
         for(int i=0; i<str.length(); i++) {
             char ch = str.charAt(i);
             if(map.containsKey(ch)) {

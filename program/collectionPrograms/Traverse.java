@@ -23,7 +23,5 @@ public class Traverse {
         names.forEach(e->{
             System.out.println(e);
         });
-
-        
     }
 }

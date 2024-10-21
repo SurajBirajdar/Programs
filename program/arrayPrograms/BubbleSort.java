@@ -7,7 +7,7 @@ public class BubbleSort {
         int arr[] = {23, 12, 89, 100, 11};
         int temp;
         int length = arr.length;
-        for(int i=0; i<length-1; i++){
+        for(int i=0; i<length-1; i++){ // number of passes
             for(int j=0; j<length-1; j++){
                 if(arr[j] > arr[j+1]){
                     temp = arr[j];
