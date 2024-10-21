@@ -14,6 +14,10 @@ public class SortedMapValues {
         testMap.put("m",5);
         testMap.put("k",1);
 
+//        for(Integer value :testMap.values()) {
+//            System.out.print(value+ " ");
+//        }
+
         java.util.LinkedHashMap finalMap = testMap.entrySet().stream().sorted((t1,t2)-> t1.getValue().compareTo(t2.getValue()))
                 .collect(Collectors.toMap(Map.Entry::getKey,Map.Entry::getValue,(t1,t2)->t1,java.util.LinkedHashMap::new));
 
