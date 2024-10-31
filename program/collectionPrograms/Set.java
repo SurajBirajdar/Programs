@@ -1,11 +1,9 @@
 package programs.program.collectionPrograms;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.List;
 
-public class Set {
+public class Set<E> {
     public static void main(String[] args) {
         List<Integer> lis1=new ArrayList();
         lis1 .add(1);
@@ -16,7 +14,7 @@ public class Set {
         List<Integer> list2=new ArrayList();
         list2 .add(2);
         list2 .add(3);
-        Set s = new Set();
+        //Set<E> s = new Set<E>();
         //set.retainAll(list2);
         //System.out.println(set);
     }
