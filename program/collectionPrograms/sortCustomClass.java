@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class sortCustomClass {
+
     public static void main(String[] args) {
         ArrayList<Student> arrList = new ArrayList<Student>();
         Student s1 = new Student(2,"suraj");
@@ -43,6 +44,7 @@ class Student{
                 ", name='" + name + '\'' +
                 '}';
     }
+
 
 //    @Override
 //    public int compareTo(Student o) {

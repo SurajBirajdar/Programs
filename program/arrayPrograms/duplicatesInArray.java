@@ -21,5 +21,19 @@ public class duplicatesInArray {
                 System.out.print(m.getKey() + " ");
             }
         }
+        //Second Approach
+        /*
+        String[] arr = { "C","java", "python", "C", "C++", "java", "python" };
+
+        for (int i = 0; i < arr.length; i++) {
+
+            for (int j = i + 1; j < arr.length; j++) {
+
+                if (arr[i].equals(arr[j])) {
+                    System.out.println("Found duplicate element " + arr[i]);
+                }
+            }
+        }
+        */
     }
 }
