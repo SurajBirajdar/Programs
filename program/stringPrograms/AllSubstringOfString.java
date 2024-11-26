@@ -8,7 +8,6 @@ public class AllSubstringOfString {
                 System.out.println(inputString.substring(startIndex,endIndex));
             }
         }
-
     }
     public static void main(String[] args) {
         allSubString("abc");
