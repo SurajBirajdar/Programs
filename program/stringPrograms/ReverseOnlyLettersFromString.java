@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class ReverseOnlyLettersFromString {
     public static void main(String[] args) {
-        String str = "ab-cd";
+        String str = "a8b-cd123";
         reverseLettersOnly(str);
     }
     public static void reverseLettersOnly(String str){
@@ -28,7 +28,10 @@ public class ReverseOnlyLettersFromString {
             }
         }
         StringBuilder sb = new StringBuilder();
-        System.out.println(Arrays.toString(ch));
+        for(Character c : ch) {
+            sb.append(c);
+        }
+        System.out.println(sb);
 
 
     }
