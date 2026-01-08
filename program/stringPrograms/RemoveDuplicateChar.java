@@ -18,5 +18,17 @@ public class RemoveDuplicateChar {
             sb.append(ch);
         }
         System.out.println(sb);
+
+        //================Another approach========================//
+        String str2 = "asunajja";
+        char[] ch = str2.toCharArray();
+        Set<Character> set2 = new HashSet<>();
+        StringBuilder sb2 = new StringBuilder();
+        for(int i=0; i<ch.length; i++) {
+            if(set2.add(ch[i]) == true) {
+                sb2.append(ch[i]);
+            }
+        }
+        System.out.println(sb2);
     }
 }
