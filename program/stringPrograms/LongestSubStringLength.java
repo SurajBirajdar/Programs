@@ -22,4 +22,4 @@ public class LongestSubStringLength {
         }
         System.out.println(longestSubStringLength);
     }
-    }
+}
