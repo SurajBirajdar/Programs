@@ -6,7 +6,7 @@ public class FrequencyEachCharacterWithoutHashMap {
     public static void main(String[] args) {
 
         String s1 = "surajsu";
-        frequencyOfEachCharWithouthashMap(s1);
+        //frequencyOfEachCharWithouthashMap(s1);
 //        char[] arr = s1.toCharArray();
 //        int fr[] = new int[arr.length];
 //
@@ -31,6 +31,31 @@ public class FrequencyEachCharacterWithoutHashMap {
 //                System.out.println(arr[i] + "-->" + fr[i]);
 //            }
 //        }
+        //===================Another approach=========================================================//
+        // frequency of each character without using hashmap
+        String str = "abcdabc";
+        char[] ch = str.toCharArray();
+        for(int i=0 ; i<ch.length; i++) {
+            int count = 1;
+            boolean alreadyCounted = false;
+            for(int k=0; k<i; k++) {
+
+                if(ch[i] == ch[k]) {
+                    alreadyCounted = true;
+                }
+            }
+            if(alreadyCounted)
+                continue;
+
+            for(int j=0; j<ch.length; j++) {
+                if(ch[i] == ch[j] && i < j)  {
+                    if(i != j) {
+                        count++;
+                    }
+                }
+            }
+            System.out.println("Frequency of char " + ch[i] + " is " + count);
+        }
     }
 
     public static void frequencyOfEachCharWithouthashMap(String str) {
@@ -50,4 +75,5 @@ public class FrequencyEachCharacterWithoutHashMap {
             }
         }
     }
+
 }
