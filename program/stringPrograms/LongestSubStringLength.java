@@ -42,5 +42,26 @@ public class LongestSubStringLength {
             }
         }
         System.out.println(maxLength);
+
+        //========================================================//
+        // optimized approach - using sliding window and hashset
+        String str1 = "abcabcbb";
+        int maxLength1 = 0;
+        int left1 = 0;
+        Set<Character> set1 = new HashSet<>();
+        //find longest substring length of given string
+        for(int i=0; i<str1.length(); i++) {
+
+            if(set1.contains(str1.charAt(i))) {
+                set1.remove(str1.charAt(left1));
+                left1++;
+            }
+            set1.add(str1.charAt(i));
+            if(set1.size() > maxLength1) {
+                maxLength1 = set1.size();
+            }
+        }
+        System.out.println(maxLength1);
     }
 }
+
