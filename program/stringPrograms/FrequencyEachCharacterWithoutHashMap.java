@@ -76,4 +76,29 @@ public class FrequencyEachCharacterWithoutHashMap {
         }
     }
 
+    public void frequencyWithoutHashMap(String str) {
+        // Goal: print frequency of each character in the string without using HashMap.
+        // Approach: for each position i, we count how many times str.charAt(i) occurs.
+        // To avoid printing duplicates (same character multiple times), we skip counting/printing
+        // when we detect that the same character already appeared at an earlier index.
+
+        for (int i = 0; i < str.length(); i++) {              // Pick a character at index i.
+            int count = 0;                                    // Will hold frequency of str.charAt(i).
+
+            for (int j = 0; j < str.length(); j++) {          // Compare it with every character at index j.
+                if (str.charAt(i) == str.charAt(j)) {         // Same character found at position j.
+                    if (i > j) {                              // If we already saw this char earlier (j < i)...
+                        break;                                // ...stop: this char was/will be handled at that earlier i.
+                    } else {
+                        count++;                              // Otherwise count this matching occurrence.
+                    }
+                }
+            }
+
+            if (count != 0) {                                 // count will be 0 only when we broke due to duplicate.
+                System.out.println(str.charAt(i) + " : " + count); // Print character and its frequency.
+            }
+        }
+    }
+
 }
