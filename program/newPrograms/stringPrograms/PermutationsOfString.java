@@ -1,120 +1,124 @@
+// This line tells Java where this file belongs in the project folder structure
 package programs.program.newPrograms.stringPrograms;
 
+// These are imports - they bring in pre-built Java tools (though we don't actually use these two)
 import java.util.ArrayList;
 import java.util.List;
 
-// This class will create all permutations (all different orders) of a string.
-// Example: "ABC" -> ABC, ACB, BAC, BCA, CAB, CBA
+/*
+ * WHAT ARE PERMUTATIONS?
+ * Permutations are all the different ways you can arrange letters.
+ * Example: For "ABC", the permutations are:
+ * ABC, ACB, BAC, BCA, CAB, CBA (6 different arrangements)
+ *
+ * HOW THIS WORKS:
+ * We use a technique called "backtracking" - we try different positions,
+ * then undo our changes and try again.
+ */
 public class PermutationsOfString {
 
-    // This method returns a list that contains ALL permutations of the input string.
-    // It does this WITHOUT recursion. Only loops + lists.
-    public static List<String> findPermutations(String str) {
+    /**
+     * This method finds all permutations of a character array
+     *
+     * @param arr - the character array we're rearranging (example: ['A', 'B', 'C'])
+     * @param fi - "fixed index" - the position we're currently fixing/deciding (starts at 0)
+     *
+     * EXAMPLE WALKTHROUGH with "ABC":
+     * - First call: fi=0, we try A, B, C at position 0
+     * - Second call: fi=1, we try remaining letters at position 1
+     * - Third call: fi=2, we try the last letter at position 2
+     */
+    public static void permutations(char[] arr, int fi) {
 
-        // result = our "final basket" where we keep permutations.
-        List<String> result = new ArrayList<>();
+        // BASE CASE: Have we fixed all positions?
+        // If fi > arr.length-1, it means we've arranged all letters
+        // Example: if arr has 3 letters (length=3), when fi=3, we're done (3 > 3-1)
+        if(fi > arr.length-1) {
+            // Print the complete permutation we just created
+            // Example: This might print "ABC" or "BAC" etc.
+            System.out.println(arr);
 
-        // If str is null (nothing) OR str is empty (""), return list with just "".
-        // (Permutation of empty string is empty string.)
-        if (str == null || str.isEmpty()) {
-            result.add("");
-            return result;
+            // Return means "stop this function and go back"
+            // We go back to try other arrangements
+            return;
         }
 
-        // Put the 1st character into the list.
-        // Example: str="ABC" -> result=["A"]
-        result.add(String.valueOf(str.charAt(0)));
+        // RECURSIVE CASE: We still have positions to fill
+        // This loop tries every remaining character at the current position (fi)
+        // Example: if fi=0, we try putting each letter (A, B, C) at position 0
+        for(int i=fi; i<arr.length; i++) {
 
-        // Now we take remaining characters one by one: B then C then ...
-        // i starts from 1 because 0th character is already used.
-        for (int i = 1; i < str.length(); i++) {
+            // STEP 1: SWAP - Put character at position i into position fi
+            // Example: swap(arr, 1, 0) would swap positions 0 and 1
+            // If arr=['A','B','C'], after swap arr=['B','A','C']
+            swap(arr, i, fi);
 
-            // currentChar = the new character we are inserting everywhere.
-            // Example: for "ABC": i=1 -> 'B', i=2 -> 'C'
-            char currentChar = str.charAt(i);
+            // STEP 2: RECURSE - Now fix the next position (fi+1)
+            // This is like saying "I've decided position fi, now decide position fi+1"
+            // Example: if we fixed position 0 to 'A', now fix position 1
+            permutations(arr, fi+1);
 
-            // tempList = new basket for NEW permutations after inserting currentChar.
-            List<String> tempList = new ArrayList<>();
-
-            // For every permutation we already have in result...
-            // Example after "A": result has only "A"
-            // Example after inserting B: result has "BA", "AB"
-            for (String perm : result) {
-
-                // We insert currentChar at EVERY position in perm.
-                // If perm is "AB" (length 2), positions are:
-                // j=0 _AB  -> put at start
-                // j=1 A_B  -> put in middle
-                // j=2 AB_  -> put at end
-                for (int j = 0; j <= perm.length(); j++) {
-
-                    // Build new permutation by splitting perm into 2 parts:
-                    // left  = perm.substring(0, j)
-                    // right = perm.substring(j)
-                    // newPerm = left + currentChar + right
-                    // Example: perm="AB", currentChar='C'
-                    // j=0: ""  + C + "AB" -> "CAB"
-                    // j=1: "A" + C + "B"  -> "ACB"
-                    // j=2: "AB"+ C + ""   -> "ABC"
-                    String newPerm = perm.substring(0, j) + currentChar + perm.substring(j);
-
-                    // Put this new permutation into tempList.
-                    tempList.add(newPerm);
-                }
-            }
-
-            // Now tempList has all new permutations. Make it the new result.
-            result = tempList;
+            // STEP 3: BACKTRACK - Undo the swap to try other possibilities
+            // This swaps back to the original arrangement
+            // Example: if we changed ['A','B','C'] to ['B','A','C'], change it back
+            // WHY? So we can try other characters at position fi
+            swap(arr, i, fi);
         }
-
-        // Finally return all permutations.
-        return result;
     }
 
-    // main() is only for testing/printing. It is not required for the algorithm.
+    /**
+     * This helper method swaps two characters in an array
+     *
+     * @param arr - the character array (example: ['A', 'B', 'C'])
+     * @param i - first position to swap (example: 0)
+     * @param fi - second position to swap (example: 1)
+     *
+     * EXAMPLE: If arr=['A','B','C'], i=0, fi=1
+     * After swap: arr=['B','A','C']
+     * (A and B switched places)
+     */
+    public static void swap(char[] arr, int i, int fi) {
+
+        // STEP 1: Save the character at position i in a temporary variable
+        // Example: if arr[i] = 'A', then temp = 'A'
+        // WHY? Because we're about to overwrite arr[i], so we need to remember it
+        char temp = arr[i];
+
+        // STEP 2: Put the character from position fi into position i
+        // Example: if arr[fi] = 'B', then arr[i] = 'B'
+        // Now arr[i] has the value that was in arr[fi]
+        arr[i] = arr[fi];
+
+        // STEP 3: Put the saved character (temp) into position fi
+        // Example: temp = 'A', so arr[fi] = 'A'
+        // Now the swap is complete! The two characters have traded places
+        arr[fi] = temp;
+    }
+
+    /**
+     * The main method - this is where the program starts running
+     * Java always looks for this method first when you run a program
+     */
     public static void main(String[] args) {
 
-        // ---- Test Case 1 ----
-        String input1 = "ABC";
-        System.out.println("Permutations of '" + input1 + "':");
+        // Create a string with the letters we want to permute
+        // Example: "ABC" means we want to find all arrangements of A, B, and C
+        String str = "ABC";
 
-        // Call our method to get permutations.
-        List<String> perms1 = findPermutations(input1);
+        // Call the permutations method:
+        // - str.toCharArray() converts the String "ABC" into a char array ['A', 'B', 'C']
+        //   WHY? Because arrays are easier to manipulate (swap characters)
+        // - 0 is the starting index (we start fixing from position 0)
+        //
+        // WHAT WILL HAPPEN:
+        // This will print all 6 permutations:
+        // ABC, ACB, BAC, BCA, CAB, CBA
+        permutations(str.toCharArray(), 0);
 
-        // Print each permutation with a number.
-        for (int i = 0; i < perms1.size(); i++) {
-            System.out.println((i + 1) + ". " + perms1.get(i));
-        }
-        System.out.println("Total: " + perms1.size() + " permutations\n");
-
-        // ---- Test Case 2 ----
-        String input2 = "AB";
-        System.out.println("Permutations of '" + input2 + "':");
-        List<String> perms2 = findPermutations(input2);
-        for (int i = 0; i < perms2.size(); i++) {
-            System.out.println((i + 1) + ". " + perms2.get(i));
-        }
-        System.out.println("Total: " + perms2.size() + " permutations\n");
-
-        // ---- Test Case 3 ----
-        // "1234" has 4! = 24 permutations.
-        String input3 = "1234";
-        System.out.println("Permutations of '" + input3 + "':");
-        List<String> perms3 = findPermutations(input3);
-        System.out.println("Total: " + perms3.size() + " permutations");
-
-        // Print only first 10 so output doesn't become huge.
-        System.out.println("First 10 permutations:");
-        for (int i = 0; i < Math.min(10, perms3.size()); i++) {
-            System.out.println((i + 1) + ". " + perms3.get(i));
-        }
-
-        // ---- Test Case 4 ----
-        String input4 = "XY";
-        System.out.println("\nPermutations of '" + input4 + "':");
-        List<String> perms4 = findPermutations(input4);
-
-        // Another way to print: forEach prints each element.
-        perms4.forEach(System.out::println);
+        // TRY YOURSELF:
+        // Change "ABC" to "AB" - you'll get 2 permutations: AB, BA
+        // Change "ABC" to "ABCD" - you'll get 24 permutations!
+        // Formula: n! (factorial) - for 3 letters: 3! = 3×2×1 = 6 permutations
     }
+
 }
