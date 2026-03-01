@@ -126,7 +126,7 @@ public class TrappedRainWater {
             // WHY? Water fills up to the minimum of the two boundaries
             // Example: At i=2: wl = min(4, 3) - 0 = 3 - 0 = 3 units of water
             // Think of it like: water pours down, but can only go as high as the shorter wall
-            wl = lb - height[i];
+            wl = Math.min(lb,rb) - height[i];
 
             // WAIT! There's a bug here. It should be wl = min(lb, rb) - height[i]
             // But the code uses: wl = lb - height[i] (missing the right max consideration)
