@@ -48,20 +48,23 @@ public class LongestSubStringLength {
         String str1 = "abcabcbb";
         int maxLength1 = 0;
         int left1 = 0;
+        String longestSubString = "";
         Set<Character> set1 = new HashSet<>();
         //find longest substring length of given string
         for(int i=0; i<str1.length(); i++) {
 
-            if(set1.contains(str1.charAt(i))) {
+            while(set1.contains(str1.charAt(i))) {
                 set1.remove(str1.charAt(left1));
                 left1++;
             }
             set1.add(str1.charAt(i));
             if(set1.size() > maxLength1) {
+                longestSubString = str1.substring(left1, i+1);
                 maxLength1 = set1.size();
             }
         }
         System.out.println(maxLength1);
+        System.out.println(longestSubString);
     }
 }
 
