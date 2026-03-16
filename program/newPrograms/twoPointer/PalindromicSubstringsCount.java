@@ -38,6 +38,9 @@ package programs.program.newPrograms.twoPointer;
  */
 public class PalindromicSubstringsCount {
 
+    static int maxLength = 0;
+    static String maxLengthPalindrome = "";
+
     public static void main(String[] args) {
         // =====================================================================
         // Step 1: Initialize the test string
@@ -103,6 +106,7 @@ public class PalindromicSubstringsCount {
         // For "abbac": 7 palindromic substrings total
         // ("a" at 0, "b" at 1, "b" at 2, "a" at 3, "c" at 4, "bb", "abba")
         System.out.println(count);
+        System.out.println("Maximum length palindromic substring is: " + maxLengthPalindrome + " and its length is: " + maxLength);
     }
 
     /**
@@ -187,6 +191,13 @@ public class PalindromicSubstringsCount {
             // - Second iteration: found "abba", count becomes 2
             // - Third iteration would fail condition, so we exit
             count++;
+
+            System.out.println(str.substring(left,right+1));
+            String current = str.substring(left, right+1);
+            if(current.length() > maxLength) {
+                maxLength = current.length();
+                maxLengthPalindrome = current;
+            }
 
             // =================================================================
             // Move left pointer one step to the LEFT (decrease by 1)
