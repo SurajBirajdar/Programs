@@ -51,6 +51,9 @@ public class LinkedListImplementation_1 {
         printRecursionWay(a);
         System.out.println();
         printRecursionWayInReverseOrder(a);
+        System.out.println();
+        int length = lengthOfLL(a);
+        System.out.println("Length of linkedlist is: " + length);
     }
 
 
