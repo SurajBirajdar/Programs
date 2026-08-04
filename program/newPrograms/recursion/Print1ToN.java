@@ -6,9 +6,8 @@ public class Print1ToN {
         if(count > n) {
             return;
         }
-
-        print1ToN(n, count+1);
         System.out.println(count);
+        print1ToN(n, count+1);
     }
     public static void main(String[] args) {
         int n = 5;

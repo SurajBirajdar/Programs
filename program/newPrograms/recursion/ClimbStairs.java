@@ -8,6 +8,7 @@ public class ClimbStairs {
         if(n == 2) {
             return 2;
         }
+        // number of ways to reach nth stair = number of ways to reach (n-1) stair + number of ways to reach (n-2) stair
         int ans = climbStair(n-1) + climbStair(n-2);
         return ans;
     }
