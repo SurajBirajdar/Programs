@@ -17,7 +17,7 @@ public class LinkedListImplementation_2 {
 
         void insertAtEnd(int data) {
             Node newNode = new Node(data);
-            if(head == null) {
+            if(head == null && tail == null) {
                 head = newNode;
             } else {
                 tail.next = newNode;
